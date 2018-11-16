@@ -21,7 +21,7 @@ def plotData(X, y):
     plt.legend(['Admitted', 'Not admitted'])
     plt.savefig("plotData.png")
     plt.show()
-    raw_input()
+    input()
 
 
 def costFunction(theta, X, y):
@@ -51,15 +51,15 @@ y = y.reshape(-1, 1)
 theta = np.zeros(3)
 X = np.vstack((np.ones(m), X.T)).T
 J, grad = costFunction(theta, X, y)
-print "Initial J = %f" % J
-print "Initial grad = "
-print grad
+print("Initial J = %f" % J)
+print ("Initial grad = ")
+print (grad)
 
 # find cost and theta by fminunc
 res = minimize(costFunction, theta, method='BFGS', jac=True, options={'maxiter': 400}, args=(X, y))  # 这里的costFunction函数里的返回值包括代价值和更新的theta值，返回的theta值一定要是一维的行向量才能继续被优化函数所接收
-print "The cost at theta found by fminunc:%f" % res.fun
-print "The theta found by fminunc:"
-print res.x
+print ("The cost at theta found by fminunc:%f" % res.fun)
+print ("The theta found by fminunc:")
+print (res.x)
 
 # prediction witn 45 and 85 score
 theta = res.x.reshape(-1, 1)
@@ -69,6 +69,6 @@ print('For a student with scores 45 and 85, we predict an admission probability 
 # compute the accuracy with our training set
 p = predict(theta, X)
 accuracy = np.mean(np.double(p == y))*100  # np.mean()求M*N个数的平均值（asix不取值，若取0压缩行，取1压缩列）
-print "the accruracy is %.2f%%" % accuracy
+print ("the accruracy is %.2f%%" % accuracy)
 
 

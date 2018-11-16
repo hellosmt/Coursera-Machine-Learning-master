@@ -2,7 +2,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 from scipy.optimize import minimize
-from plotDecisionBoundary import  plotDecisionBoundary
+from plotDecisionBoundary import plotDecisionBoundary
 
 def sigmoid(z):
     return 1/(1+np.exp(-z))
@@ -58,15 +58,15 @@ theta = np.zeros(X.shape[1])
 _lambda = 1
 J, grad = costFunctionReg(theta, X, y, _lambda)
 
-print "Initial J by regularizatuon = %f" % J
-print "Initial grad = "
-print grad
+print ("Initial J by regularizatuon = %f" % J)
+print ("Initial grad = ")
+print (grad)
 
 # find J by fminunc
 res = minimize(costFunctionReg, theta, method='BFGS', jac=True, options={'maxiter': 400}, args=(X, y, _lambda))
-print "The cost at theta found by fminunc:%f" % res.fun
-print "The theta found by fminunc:"
-print res.x
+print ("The cost at theta found by fminunc:%f" % res.fun)
+print ("The theta found by fminunc:")
+print (res.x)
 
 theta = res.x.reshape(-1, 1)
 
