@@ -54,4 +54,4 @@ def displayData(X, example_width=None):
     # Do not show axis
     plt.axis('off')
     plt.savefig('showExamples.png')
-    input()
+
